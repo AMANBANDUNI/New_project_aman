@@ -17,11 +17,11 @@
 
   <tbody>
     <% @products.each do |product| %>
-      <%# if %>
-        <!-- <tr class="deleted" > -->
-      <%# else %>
-        <!-- <tr > -->
-      <%# end %>
+      <% if product.deleted? %>
+        <tr class="deleted" >
+      <% else %>
+        <tr >
+      <% end %>
 
       <tr>
         <td><%= check_box_tag "products[]", product.id %></td>
