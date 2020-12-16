@@ -63,7 +63,16 @@ class ProductsController < ApplicationController
 
   def soft_delete
     debugger
+    @product.update(deleted: true)
+    respond_to do |format|
+      format.html { redirect_to '/', notice: 'Product was successfully soft-deleted.' }
+      format.json { head :no_content }
+    end
   end  
+
+  # def undeleted
+  #   @product.update(deleted: false)
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
