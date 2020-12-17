@@ -1,10 +1,11 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy, :soft_delete]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :soft_delete, :undeleted]
 
   # GET /products
   # GET /products.json
   def index
     @products = Product.all
+    # @products = Product.where(deleted: false)
   end
 
   # GET /products/1
@@ -62,17 +63,19 @@ class ProductsController < ApplicationController
   end
 
   def soft_delete
-    debugger
     @product.update(deleted: true)
-    respond_to do |format|
-      format.html { redirect_to '/', notice: 'Product was successfully soft-deleted.' }
-      format.json { head :no_content }
-    end
+    redirect_to '/'
+    # redirect_to products_path
+    # respond_to do |format|
+    #   format.html { redirect_to '/', notice: 'Product was successfully soft-deleted.' }
+    #   format.json { head :no_content }
+    # end
   end  
 
-  # def undeleted
-  #   @product.update(deleted: false)
-  # end
+  def undeleted
+    @product.update(deleted: false)
+    redirect_to '/'
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
