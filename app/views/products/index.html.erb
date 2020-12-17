@@ -2,7 +2,7 @@
 
 <h1>Products</h1>
 
-<form name="myform" class="form" action="" >
+<%= form_tag products_destroy_path, method: :post do %>
   <table>
     <thead>
       <tr>
@@ -24,7 +24,7 @@
           <tr >
         <% end %>
 
-          <td id="product.id"><%= check_box_tag "products[]", product.id %></td>
+          <td> <%= check_box_tag "product_ids[]", product.id, false, :id => "product_#{product.id}" %></td>
           <td><%= product.name %></td>
           <td><%= product.color %></td>
           <td><%= product.description %></td>
@@ -39,10 +39,11 @@
       <% end %>
     </tbody>
   </table>
-  <div>
-    
-  </div>
+  <br>
+    <%= submit_tag "Destroy" %>
+  <br>
 </form>
 <br>
 
 <%= link_to 'New Product', new_product_path %>
+<% end %>
