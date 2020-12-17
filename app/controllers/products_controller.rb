@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy, :soft_delete, :undeleted]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :soft_delete, :selected_destroy, :undeleted]
 
   # GET /products
   # GET /products.json
@@ -75,6 +75,14 @@ class ProductsController < ApplicationController
   def undeleted
     @product.update(deleted: false)
     redirect_to '/'
+  end
+
+  def selected_destroy
+
+    Product.where(id: params[:product_ids]).destroy_all
+   
+      redirect_to products_path
+    
   end
 
   private
