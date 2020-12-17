@@ -8,8 +8,6 @@ Rails.application.routes.draw do
 
   get "/un-delete/:id" => "products#undeleted"
 
-  # post "/products_destroy_path", to: "products#selected_destroy"
-
-  post "selected_destroy", to: "products#selected_destroy", as: "products_destroy"
+  post "destroy_multiple", to: "products#destroy_multiple", as: "products_destroy"
 
 end

@@ -77,7 +77,7 @@ class ProductsController < ApplicationController
     redirect_to '/'
   end
 
-  def selected_destroy
+  def destroy_multiple
 
     Product.where(id: params[:product_ids]).destroy_all
    
