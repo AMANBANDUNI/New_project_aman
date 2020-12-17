@@ -6,4 +6,6 @@ Rails.application.routes.draw do
 
   get "/soft-delete/:id" => "products#soft_delete"
 
+  get "/un-delete/:id" => "products#undeleted"
+
 end
