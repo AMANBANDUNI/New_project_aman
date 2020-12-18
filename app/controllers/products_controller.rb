@@ -78,12 +78,10 @@ class ProductsController < ApplicationController
   end
 
   def destroy_multiple
-
     Product.where(id: params[:product_ids]).destroy_all
-   
-      redirect_to products_path
-    
+    redirect_to products_path
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
